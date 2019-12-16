@@ -11,11 +11,11 @@ Install-Module -Name navcontainerhelper
 #Setup Docker Container.
 #Change Values for $imageName, $ContainerName, username, Password, $LicenseFile & Memory Limit as per your requirment.
 
-$imageName = "mcr.microsoft.com/businesscentral/onprem:15.0.36560.0-w1"
+$imageName = "mcr.microsoft.com/businesscentral/onprem:15.0.36560.0-es-ltsc2019"
 $containerName = "BC365Wave2"
 $auth = "UserPassword"
 $credential = New-Object pscredential 'admin', (ConvertTo-SecureString -String 'P@ssword1' -AsPlainText -Force)
-$licenseFile = "D:\BC15Lic.flf"
+$licenseFile = "C:\VSS\6062229.flf"
 
 New-BCContainer -accept_eula `
                 -imageName $imageName `
@@ -25,4 +25,5 @@ New-BCContainer -accept_eula `
                 -licenseFile $licenseFile `
                 -updateHosts `
                 -includeAL `
-                -memoryLimit 3G
+                -memoryLimit 4G `
+                -ACCEPT_OUTDATED
